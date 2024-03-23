@@ -24,7 +24,7 @@ const Card: React.FC<CardProps> = ({ src, title, description, isDarkMode }) => {
                                 width: "220px", height: "493px",
                             }}
                         >
-                            <h1 className='absolute top-0 left-[167px] bg-[#000000] text-white px-4'>Ad</h1>
+                            <h1 className='absolute top-[-0.6px] left-[167.2px] bg-[#000000] text-white px-4'>Ad</h1>
                             <img className='mx-auto' src={typeof src === 'string' ? src : src.src} style={{
                                 width: "100%", height: "218px",
                                 objectFit: 'cover',

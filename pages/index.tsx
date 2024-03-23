@@ -33,11 +33,11 @@ const Home: React.FC = () => {
                             onChange={toggleMode}
                             className='sr-only'
                         />
-                        <span className='label flex items-center text-sm font-medium text-black'>
+                        <span className={`${isDarkMode ? 'text-white' : 'text-black'} label flex items-center text-sm font-medium`}>
                             Light
                         </span>
                         <span
-                            className={`slider mx-4 flex h-8 w-[60px] items-center rounded-full p-1 duration-200 ${isDarkMode ? 'bg-[#212b36]' : 'bg-[#CCCCCE]'
+                            className={`slider mx-4 flex h-8 w-[60px] items-center rounded-full p-1 duration-200 ${isDarkMode ? 'bg-gray-900' : 'bg-[#CCCCCE]'
                                 }`}
                         >
                             <span
@@ -45,16 +45,19 @@ const Home: React.FC = () => {
                                     }`}
                             ></span>
                         </span>
-                        <span className='label flex items-center text-sm font-medium text-black'>
+                        <span className={`${isDarkMode ? 'text-white' : 'text-black'} label flex items-center text-sm font-medium`}>
                             Dark
                         </span>
                     </label>
                 </div>
                 <div className={`max-w-[1444px] mx-auto`}>
-                    <button className="underline text-2xl font-bold">Sports</button>
+                    <button className="text-2xl font-bold">
+                         <h1 className='text-4xl mb-3'>Sports</h1>
+                         <hr className='border border-purple-400' />
+                    </button>
 
                     {/* First Section of Cards - Sports  */}
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5'>
+                    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5'>
                         <SportsCard
                             src={img1}
                             title="Sacramento River Cats"
@@ -115,10 +118,10 @@ const Home: React.FC = () => {
                                 />
                                 <CollectionSpotLiteCard
                                     src={img6}
-                                    title="Las Vegas Aviators"
+                                    title="Sacramento River Cats"
                                     secondTitle="OCT 15 | SUN | 4:30 PM"
-                                    description="Las Vegas Ballpark, Las Vegas, Nevada"
-                                    buttonName="Take Flight Collection"
+                                    description="Sutter Health Park, Sacramento, California"
+                                    buttonName="Orange Collection"
                                     isDarkMode={isDarkMode}
                                 />
                                 <CollectionSpotLiteCard
