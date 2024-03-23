@@ -6,13 +6,14 @@ interface CardProps {
     src: StaticImageData | string;
     title: string;
     description: string;
+    isDarkMode: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ src, title, description }) => {
+const Card: React.FC<CardProps> = ({ src, title, description, isDarkMode }) => {
     return (
-        <div className="FirstCardDiv mt-6 ">
-            <div className='overflow-hidden' style={{
-                width: "237px", height: "511px", backgroundColor: "#FFFFFF",
+        <div className="FirstCardDiv mt-6">
+            <div className={`${isDarkMode ? ' bg-[#3B3E47]' : 'bg-white'} overflow-hidden`} style={{
+                width: "237px", height: "511px",
                 boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)"
             }}>
                 <div className=' overflow-hidden'>
@@ -29,7 +30,7 @@ const Card: React.FC<CardProps> = ({ src, title, description }) => {
                                 objectFit: 'cover',
                             }} alt="Example Image" />
                             <div className='mx-3 rounded-sm mt-3'>
-                                <h1 className='text-black font-medium text-start text-xl'>{title}</h1>
+                                <h1 className={`${isDarkMode ? 'text-white' : 'text-black'} font-medium text-start text-xl`}>{title}</h1>
                                 <p className='text-start text-sm'>{description}</p>
                             </div>
                         </div>

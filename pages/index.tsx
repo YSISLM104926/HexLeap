@@ -12,9 +12,6 @@ import img6 from '../assets/x2.png';
 import 'tailwindcss/tailwind.css'; // Move this import to the top if it's not already there
 
 
-import Carousel from 'react-material-ui-carousel'
-import { Paper, Button } from '@mui/material'
-
 const Home: React.FC = () => {
 
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -25,86 +22,120 @@ const Home: React.FC = () => {
 
     return (
 
-        <div className={`${isDarkMode ? 'bg-[#292B32] text-white' : 'bg-white text-black'}`}>
-            <div className={`max-w-[1444px] mx-auto`}>
-                <button onClick={toggleMode} className="underline text-2xl font-bold">Sports</button>
 
-                {/* First Section of Cards - Sports  */}
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5'>
-                    <SportsCard
-                        src={img1}
-                        title="Sacramento River Cats"
-                        totalEvents={48}
-                        sport="Baseball"
-                    />
-                    <SportsCard
-                        src={img2}
-                        title="Sacramento River Cats"
-                        totalEvents={48}
-                        sport="Baseball"
-                    />
-                    <SportsCard
-                        src={img3}
-                        title="Sacramento River Cats"
-                        totalEvents={48}
-                        sport="Baseball"
-                    />
-                    <SportsCard
-                        src={img2}
-                        title="Sacramento River Cats"
-                        totalEvents={48}
-                        sport="Baseball"
-                    />
-                    <SportsAdsCard
-                        src={img4}
-                        title="Advertisement title"
-                        description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-                    />
+        <>
+            <div className={`${isDarkMode ? 'bg-[#292B32] text-white' : 'bg-white text-black'} pt-12`}>
+                <div className='flex justify-end me-20'>
+                    <label className='themeSwitcherTwo relative inline-flex cursor-pointer select-none items-center'>
+                        <input
+                            type='checkbox'
+                            checked={isDarkMode}
+                            onChange={toggleMode}
+                            className='sr-only'
+                        />
+                        <span className='label flex items-center text-sm font-medium text-black'>
+                            Light
+                        </span>
+                        <span
+                            className={`slider mx-4 flex h-8 w-[60px] items-center rounded-full p-1 duration-200 ${isDarkMode ? 'bg-[#212b36]' : 'bg-[#CCCCCE]'
+                                }`}
+                        >
+                            <span
+                                className={`dot h-6 w-6 rounded-full bg-white duration-200 ${isDarkMode ? 'translate-x-[28px]' : ''
+                                    }`}
+                            ></span>
+                        </span>
+                        <span className='label flex items-center text-sm font-medium text-black'>
+                            Dark
+                        </span>
+                    </label>
                 </div>
+                <div className={`max-w-[1444px] mx-auto`}>
+                    <button className="underline text-2xl font-bold">Sports</button>
 
-                {/* See More Button */}
-                <div className='flex justify-center mt-12'>
-                    <CustomButton name="See More" />
-                </div>
-                <br />
-
-                {/* Second Section of Cards - Collection Spotlites  */}
-                <div className={`${isDarkMode ? ' bg-gradient-to-br from-gray-900 to-gray-800 text-white' : 'bg-white text-black'}`} style={{ backgroundColor: "#F9F8FF", padding: "60px" }}>
-                    <div className='flex justify-center items-center flex-col'>
-                        <h1 className="text-5xl font-bold">Collection Spotlite</h1>
-                        <p className='mt-4 text-center'>Discover extraordinary moments with our Spotlight Collection metatickets exclusive access to premium events for an unforgettable experience. <br /> Grab yours today!</p>
+                    {/* First Section of Cards - Sports  */}
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5'>
+                        <SportsCard
+                            src={img1}
+                            title="Sacramento River Cats"
+                            totalEvents={48}
+                            sport="Baseball"
+                            isDarkMode={isDarkMode}
+                        />
+                        <SportsCard
+                            src={img2}
+                            title="Sacramento River Cats"
+                            totalEvents={48}
+                            sport="Baseball"
+                            isDarkMode={isDarkMode}
+                        />
+                        <SportsCard
+                            src={img3}
+                            title="Sacramento River Cats"
+                            totalEvents={48}
+                            sport="Baseball"
+                            isDarkMode={isDarkMode}
+                        />
+                        <SportsCard
+                            src={img2}
+                            title="Sacramento River Cats"
+                            totalEvents={48}
+                            sport="Baseball"
+                            isDarkMode={isDarkMode}
+                        />
+                        <SportsAdsCard
+                            src={img4}
+                            title="Advertisement title"
+                            description='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                            isDarkMode={isDarkMode}
+                        />
                     </div>
-                    <div className="">
-                        <div className='flex justify-center'> {/* Set display to flex */}
-                            <CollectionSpotLiteCard
-                                src={img5}
-                                title="Las Vegas Aviators"
-                                secondTitle="OCT 15 | SUN | 4:30 PM"
-                                description="Las Vegas Ballpark, Las Vegas, Nevada"
-                                buttonName="Take Flight Collection"
-                                isDarkMode={isDarkMode}
-                            />
-                            <CollectionSpotLiteCard
-                                src={img6}
-                                title="Las Vegas Aviators"
-                                secondTitle="OCT 15 | SUN | 4:30 PM"
-                                description="Las Vegas Ballpark, Las Vegas, Nevada"
-                                buttonName="Take Flight Collection"
-                                isDarkMode={isDarkMode}
-                            />
-                            <CollectionSpotLiteCard
-                                src={img5}
-                                title="Las Vegas Aviators"
-                                secondTitle="OCT 15 | SUN | 4:30 PM"
-                                description="Las Vegas Ballpark, Las Vegas, Nevada"
-                                buttonName="Take Flight Collection"
-                                isDarkMode={isDarkMode}
-                            />
+
+                    {/* See More Button */}
+                    <div className='flex justify-center mt-12 mb-12'>
+                        <CustomButton name="See More" />
+                    </div>
+                    <br />
+
+                    {/* Second Section of Cards - Collection Spotlites  */}
+                    <div className={`${isDarkMode ? ' bg-gradient-to-br from-[#18282A] to-[#221A2C]' : 'bg-white text-black'}`} style={{ backgroundColor: "#F9F8FF", padding: "60px" }}>
+                        <div className='flex justify-center items-center flex-col'>
+                            <h1 className="text-5xl font-bold">Collection Spotlite</h1>
+                            <p className='mt-4 text-center'>Discover extraordinary moments with our Spotlight Collection metatickets exclusive access to premium events for an unforgettable experience. <br /> Grab yours today!</p>
+                        </div>
+                        <div className="">
+                            <div className='flex justify-center'> {/* Set display to flex */}
+                                <CollectionSpotLiteCard
+                                    src={img5}
+                                    title="Las Vegas Aviators"
+                                    secondTitle="OCT 15 | SUN | 4:30 PM"
+                                    description="Las Vegas Ballpark, Las Vegas, Nevada"
+                                    buttonName="Take Flight Collection"
+                                    isDarkMode={isDarkMode}
+                                />
+                                <CollectionSpotLiteCard
+                                    src={img6}
+                                    title="Las Vegas Aviators"
+                                    secondTitle="OCT 15 | SUN | 4:30 PM"
+                                    description="Las Vegas Ballpark, Las Vegas, Nevada"
+                                    buttonName="Take Flight Collection"
+                                    isDarkMode={isDarkMode}
+                                />
+                                <CollectionSpotLiteCard
+                                    src={img5}
+                                    title="Las Vegas Aviators"
+                                    secondTitle="OCT 15 | SUN | 4:30 PM"
+                                    description="Las Vegas Ballpark, Las Vegas, Nevada"
+                                    buttonName="Take Flight Collection"
+                                    isDarkMode={isDarkMode}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
+
     );
 };
 
