@@ -10,10 +10,9 @@ import img4 from '../assets/d1.png';
 import img5 from '../assets/x1.png';
 import img6 from '../assets/x2.png';
 import 'tailwindcss/tailwind.css'; // Move this import to the top if it's not already there
-import Slider from "react-slick";
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
-
+import AliceCarousel from 'react-alice-carousel';
 
 
 const collectionSpotCard = [
@@ -61,75 +60,10 @@ const Home: React.FC = () => {
         setIsDarkMode(!isDarkMode);
     };
 
-    function SampleNextArrow(props: any) {
-        const { className, style, onClick } = props;
-        return (
-            <>
-                <div onClick={onClick} className={className}
-                    
-                >
-                    <GrNext
-                    style={{ ...style, fontSize: "30px" }}
-                     className='size-9 z-10 border border-blue-300 text-blue-300 transition-all 
-                     duration-300 hover:text-white hover:bg-blue-300' />
-                </div>
-            </>
-        );
-    }
-
-    function SamplePrevArrow(props: any) {
-        const { className, style, onClick } = props;
-        return (
-            <>
-                <div onClick={onClick} className={className}
-                    
-                >
-                    <GrPrevious
-                    style={{ ...style, fontSize: "30px" }}
-                     className='size-9 z-10 border border-blue-300 text-blue-300 transition-all duration-300
-                      hover:text-white hover:bg-blue-300' />
-                </div>
-            </>
-        );
-    }
-
-
-    var settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    initialSlide: 1
-                }
-            },
-            {
-                breakpoint: 375,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    initialSlide: 1
-                }
-            }
-        ]
+    const responsive = {
+        0: { items: 1 },
+        568: { items: 2 },
+        1024: { items: 3 },
     };
 
     return (
@@ -169,7 +103,7 @@ const Home: React.FC = () => {
                     </button>
 
                     {/* First Section of Cards - Sports  */}
-                    <div className='grid ms-16 grid-cols-1 md:grid-cols-3 lg:grid-cols-5'>
+                    <div className='grid ms-[130px] grid-cols-1 md:grid-cols-3 lg:grid-cols-5'>
                         <SportsCard
                             src={img1}
                             title="Sacramento River Cats"
@@ -220,29 +154,30 @@ const Home: React.FC = () => {
                         </div>
 
                         <div className='w-3/4 mx-auto'> {/* Set display to flex */}
-                            
-                            <Slider {...settings} className='flex 
-                            
-                            items-center 
-                            
-                            '>
-                                {
-                                    collectionSpotCard.map((item, index) => (
 
-                                        <CollectionSpotLiteCard
-                                            key={index}
-                                            src={item.src}
-                                            title={item.title}
-                                            secondTitle={item.secondTitle}
-                                            description={item.description}
-                                            buttonName={item.buttonName}
-                                            isDarkMode={isDarkMode}
-                                        />
-                                    ))
-
-                                }
-                            </Slider>
-                           
+                            <AliceCarousel
+                                mouseTracking
+                                responsive={responsive}
+                                controlsStrategy="alternate"
+                                renderPrevButton={() => {
+                                    return <p className="p-4 absolute left-[-110px] top-[320px] border border-sky-300 hover:cursor-pointer  "><GrPrevious className='text-blue-300 size-4 ' /></p>
+                                }}
+                                renderNextButton={() => {
+                                    return <p className="p-4 absolute right-[-70px] top-[320px] border border-sky-300 hover:cursor-pointer"><GrNext className='text-blue-300 size-4 z-10' /></p>
+                                }}
+                            >
+                                {collectionSpotCard.map((item, index) => (
+                                    <CollectionSpotLiteCard
+                                        key={index}
+                                        src={item.src}
+                                        title={item.title}
+                                        secondTitle={item.secondTitle}
+                                        description={item.description}
+                                        buttonName={item.buttonName}
+                                        isDarkMode={isDarkMode}
+                                    />
+                                ))}
+                            </AliceCarousel>
                         </div>
 
                     </div>

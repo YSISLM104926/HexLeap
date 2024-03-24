@@ -1,9 +1,7 @@
-import "../styles/slick.css";
-import "../styles/slick-theme.css";
+import '../styles/alice-carousel.css'
 
-
-function MyApp({Component, pageProps}) {
-    return <Component {...pageProps}/>;
-}
-
+function MyApp({ Component, pageProps }) {
+    return <Component {...pageProps} />
+  }
+  
 export default MyApp;
