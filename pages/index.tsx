@@ -11,10 +11,6 @@ import img5 from '../assets/x1.png';
 import img6 from '../assets/x2.png';
 import 'tailwindcss/tailwind.css'; // Move this import to the top if it's not already there
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import LeftArrow from "../assets/left-arrow.svg"
-import RightArrow from "../assets/right-arrow.svg"
 import { GrNext } from "react-icons/gr";
 import { GrPrevious } from "react-icons/gr";
 
@@ -223,7 +219,7 @@ const Home: React.FC = () => {
 
                         <div className='w-3/4 mx-auto'> {/* Set display to flex */}
                             
-                            <Slider {...settings} className=''>
+                            <Slider {...settings} className='flex items-center'>
                                 {
                                     collectionSpotCard.map((item, index) => (
 
