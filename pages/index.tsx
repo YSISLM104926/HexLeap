@@ -69,9 +69,9 @@ const Home: React.FC = () => {
                     
                 >
                     <GrNext
-                    style={{ ...style, color: "red", fontSize: "30px" }}
+                    style={{ ...style, fontSize: "30px" }}
                      className='size-9 z-10 border border-blue-300 text-blue-300 transition-all 
-                     duration-300 hover:text-white hover:bg-blue-400' />
+                     duration-300 hover:text-white hover:bg-blue-300' />
                 </div>
             </>
         );
@@ -85,8 +85,9 @@ const Home: React.FC = () => {
                     
                 >
                     <GrPrevious
-                    style={{ ...style, color: "red", fontSize: "30px" }}
-                     className='size-9 z-10 border border-blue-300 text-blue-300 transition-all duration-300 hover:text-white hover:bg-blue-400' />
+                    style={{ ...style, fontSize: "30px" }}
+                     className='size-9 z-10 border border-blue-300 text-blue-300 transition-all duration-300
+                      hover:text-white hover:bg-blue-300' />
                 </div>
             </>
         );
@@ -106,7 +107,7 @@ const Home: React.FC = () => {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 3,
                     slidesToScroll: 1,
                     infinite: true,
                     dots: true
@@ -121,10 +122,11 @@ const Home: React.FC = () => {
                 }
             },
             {
-                breakpoint: 768,
+                breakpoint: 375,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
+                    initialSlide: 1
                 }
             }
         ]
@@ -134,7 +136,7 @@ const Home: React.FC = () => {
 
 
         <>
-            <div className={`${isDarkMode ? 'bg-[#292B32] text-white' : 'bg-white text-black'} pt-12`}>
+            <div className={`${isDarkMode ? 'bg-[#292B32] text-white' : 'bg-white text-black'} pt-12 w-full`}>
                 <div className='flex justify-end me-20'>
                     <label className='themeSwitcherTwo relative inline-flex cursor-pointer select-none items-center'>
                         <input
@@ -160,14 +162,14 @@ const Home: React.FC = () => {
                         </span>
                     </label>
                 </div>
-                <div className={`max-w-[1444px] mx-auto`}>
+                <div className={`max-w-[1444px] mx-auto mt-12`}>
                     <button className="text-2xl font-bold">
-                        <h1 className='text-4xl mb-3'>Sports</h1>
-                        <hr className='border border-purple-400' />
+                        <h1 className='ms-12 text-4xl mb-3 lg:text-4xl mb-3'>Sports</h1>
+                        <hr className='ms-12 border border-purple-400  lg:border border-purple-400' />
                     </button>
 
                     {/* First Section of Cards - Sports  */}
-                    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5'>
+                    <div className='grid ms-16 grid-cols-1 md:grid-cols-3 lg:grid-cols-5'>
                         <SportsCard
                             src={img1}
                             title="Sacramento River Cats"
@@ -219,7 +221,11 @@ const Home: React.FC = () => {
 
                         <div className='w-3/4 mx-auto'> {/* Set display to flex */}
                             
-                            <Slider {...settings} className='flex items-center'>
+                            <Slider {...settings} className='flex 
+                            
+                            items-center 
+                            
+                            '>
                                 {
                                     collectionSpotCard.map((item, index) => (
 
