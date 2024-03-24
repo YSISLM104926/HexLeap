@@ -10,6 +10,51 @@ import img4 from '../assets/d1.png';
 import img5 from '../assets/x1.png';
 import img6 from '../assets/x2.png';
 import 'tailwindcss/tailwind.css'; // Move this import to the top if it's not already there
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import LeftArrow from "../assets/left-arrow.svg"
+import RightArrow from "../assets/right-arrow.svg"
+import { GrNext } from "react-icons/gr";
+import { GrPrevious } from "react-icons/gr";
+
+
+
+const collectionSpotCard = [
+    {
+        src: img5,
+        title: "Las Vegas Aviators",
+        secondTitle: "OCT 15 | SUN | 4:30 PM",
+        description: "Las Vegas Ballpark, Las Vegas, Nevada",
+        buttonName: "Take Flight Collection",
+        key: "card1"
+    },
+    {
+        src: img6,
+        title: "Sacramento River Cats",
+        secondTitle: "OCT 15 | SUN | 4:30 PM",
+        description: "Sutter Health Park, Sacramento, California",
+        buttonName: "Orange Collection",
+        key: "card2"
+    },
+    {
+        src: img5,
+        title: "Las Vegas Aviators",
+        secondTitle: "OCT 15 | SUN | 4:30 PM",
+        description: "Las Vegas Ballpark, Las Vegas, Nevada",
+        buttonName: "Take Flight Collection",
+        key: "card1"
+    },
+    {
+        src: img6,
+        title: "Sacramento River Cats",
+        secondTitle: "OCT 15 | SUN | 4:30 PM",
+        description: "Sutter Health Park, Sacramento, California",
+        buttonName: "Orange Collection",
+        key: "card2"
+    },
+
+]
 
 
 const Home: React.FC = () => {
@@ -18,6 +63,75 @@ const Home: React.FC = () => {
 
     const toggleMode = () => {
         setIsDarkMode(!isDarkMode);
+    };
+
+    function SampleNextArrow(props: any) {
+        const { className, style, onClick } = props;
+        return (
+            <>
+                <div onClick={onClick} className={className}
+                    
+                >
+                    <GrNext
+                    style={{ ...style, color: "red", fontSize: "30px" }}
+                     className='size-9 z-10 border border-blue-300 text-blue-300 transition-all 
+                     duration-300 hover:text-white hover:bg-blue-400' />
+                </div>
+            </>
+        );
+    }
+
+    function SamplePrevArrow(props: any) {
+        const { className, style, onClick } = props;
+        return (
+            <>
+                <div onClick={onClick} className={className}
+                    
+                >
+                    <GrPrevious
+                    style={{ ...style, color: "red", fontSize: "30px" }}
+                     className='size-9 z-10 border border-blue-300 text-blue-300 transition-all duration-300 hover:text-white hover:bg-blue-400' />
+                </div>
+            </>
+        );
+    }
+
+
+    var settings = {
+        dots: false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        initialSlide: 0,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 1
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            }
+        ]
     };
 
     return (
@@ -52,8 +166,8 @@ const Home: React.FC = () => {
                 </div>
                 <div className={`max-w-[1444px] mx-auto`}>
                     <button className="text-2xl font-bold">
-                         <h1 className='text-4xl mb-3'>Sports</h1>
-                         <hr className='border border-purple-400' />
+                        <h1 className='text-4xl mb-3'>Sports</h1>
+                        <hr className='border border-purple-400' />
                     </button>
 
                     {/* First Section of Cards - Sports  */}
@@ -106,34 +220,29 @@ const Home: React.FC = () => {
                             <h1 className="text-5xl font-bold">Collection Spotlite</h1>
                             <p className='mt-4 text-center'>Discover extraordinary moments with our Spotlight Collection metatickets exclusive access to premium events for an unforgettable experience. <br /> Grab yours today!</p>
                         </div>
-                        <div className="">
-                            <div className='flex justify-center'> {/* Set display to flex */}
-                                <CollectionSpotLiteCard
-                                    src={img5}
-                                    title="Las Vegas Aviators"
-                                    secondTitle="OCT 15 | SUN | 4:30 PM"
-                                    description="Las Vegas Ballpark, Las Vegas, Nevada"
-                                    buttonName="Take Flight Collection"
-                                    isDarkMode={isDarkMode}
-                                />
-                                <CollectionSpotLiteCard
-                                    src={img6}
-                                    title="Sacramento River Cats"
-                                    secondTitle="OCT 15 | SUN | 4:30 PM"
-                                    description="Sutter Health Park, Sacramento, California"
-                                    buttonName="Orange Collection"
-                                    isDarkMode={isDarkMode}
-                                />
-                                <CollectionSpotLiteCard
-                                    src={img5}
-                                    title="Las Vegas Aviators"
-                                    secondTitle="OCT 15 | SUN | 4:30 PM"
-                                    description="Las Vegas Ballpark, Las Vegas, Nevada"
-                                    buttonName="Take Flight Collection"
-                                    isDarkMode={isDarkMode}
-                                />
-                            </div>
+
+                        <div className='w-3/4 mx-auto'> {/* Set display to flex */}
+                            
+                            <Slider {...settings} className=''>
+                                {
+                                    collectionSpotCard.map((item, index) => (
+
+                                        <CollectionSpotLiteCard
+                                            key={index}
+                                            src={item.src}
+                                            title={item.title}
+                                            secondTitle={item.secondTitle}
+                                            description={item.description}
+                                            buttonName={item.buttonName}
+                                            isDarkMode={isDarkMode}
+                                        />
+                                    ))
+
+                                }
+                            </Slider>
+                           
                         </div>
+
                     </div>
                 </div>
             </div>
