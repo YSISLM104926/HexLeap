@@ -103,7 +103,7 @@ const Home: React.FC = () => {
                     </button>
 
                     {/* First Section of Cards - Sports  */}
-                    <div className='grid ms-[130px] grid-cols-1 md:grid-cols-3 lg:grid-cols-5'>
+                    <div className='grid ms-[130px] grid-cols-1 md:ms-[40px] md:grid-cols-3 lg:grid-cols-5'>
                         <SportsCard
                             src={img1}
                             title="Sacramento River Cats"
@@ -160,7 +160,7 @@ const Home: React.FC = () => {
                                 responsive={responsive}
                                 controlsStrategy="alternate"
                                 renderPrevButton={() => {
-                                    return <p className="p-4 absolute left-[-110px] top-[320px] border border-sky-300 hover:cursor-pointer  "><GrPrevious className='text-blue-300 size-4 ' /></p>
+                                    return <p className="p-4 absolute left-[-70px] top-[320px] border border-sky-300 hover:cursor-pointer  "><GrPrevious className='text-blue-300 size-4 ' /></p>
                                 }}
                                 renderNextButton={() => {
                                     return <p className="p-4 absolute right-[-70px] top-[320px] border border-sky-300 hover:cursor-pointer"><GrNext className='text-blue-300 size-4 z-10' /></p>
@@ -180,6 +180,9 @@ const Home: React.FC = () => {
                             </AliceCarousel>
                         </div>
 
+                    </div>
+                    <div className={`${isDarkMode ? 'bg-[#292B32]' : 'bg-white'} pb-20`}>
+                    {/* Footer */}
                     </div>
                 </div>
             </div>
