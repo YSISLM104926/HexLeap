@@ -18,8 +18,7 @@ const Card: React.FC<CardProps> = ({ src, title, secondTitle, description, butto
         >
             <div className={`${isDarkMode ? 'bg-[#292B32] text-white p-2 overflow-hidden' : 'bg-white text-black overflow-hidden p-2'}`} style={{
                 width: "257px", height: "625px",
-                
-
+                boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)"
             }}>
                 <img className='mx-auto'
 
